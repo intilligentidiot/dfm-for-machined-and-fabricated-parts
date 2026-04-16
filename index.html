@@ -1,23 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DFM for Machined and Fabricated Parts | Tesla Mechanical Designs</title>
-    <meta name="description" content="Optimize machined part design by reducing setups and choosing the right materials. Expert DFM tips for machining and fabrication.">
-    
+    <title>DFM for Injection Molded and Die Cast Parts | Tesla Mechanical Designs</title>
+    <meta name="description"
+        content="Optimize injection molded and die cast part design with tips on draft angles, wall thickness, and tooling efficiency. Expert DFM insights.">
+
     <!-- SEO & Open Graph -->
-    <link rel="canonical" href="https://teslamechanicaldesigns.com/blog/machined-parts-dfm">
-    <meta property="og:title" content="DFM for Machined and Fabricated Parts | Tesla Mechanical Designs">
-    <meta property="og:description" content="Learn how setup reduction and smart material choice can drastically lower machining costs.">
-    <meta property="og:image" content="images/machined-parts.png">
+    <link rel="canonical" href="https://teslamechanicaldesigns.com/blog/injection-molding-die-casting-dfm">
+    <meta property="og:title" content="DFM for Injection Molded and Die Cast Parts | Tesla Mechanical Designs">
+    <meta property="og:description"
+        content="Master draft angles, wall thickness, and tooling release for more efficient molding and die casting.">
+    <meta property="og:image" content="injection-molding.png">
     <meta name="twitter:card" content="summary_large_image">
-    
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Roboto:wght@400;700&display=swap"
+        rel="stylesheet">
+
     <style>
         :root {
             --primary: #2563eb;
@@ -58,7 +62,12 @@
             transition: background-color 0.3s, color 0.3s;
         }
 
-        h1, h2, h3, h4, h5, h6 {
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
             font-family: 'Roboto', sans-serif;
             color: var(--text);
             margin-top: 2rem;
@@ -88,26 +97,6 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: var(--text);
-            font-weight: 500;
-            font-size: 0.9rem;
-            transition: color 0.2s;
-        }
-
-        .nav-links a:hover, .nav-links a.active {
-            color: var(--primary);
         }
 
         .theme-toggle {
@@ -141,7 +130,10 @@
         .hero::before {
             content: '';
             position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
             background: linear-gradient(0deg, var(--bg) 0%, transparent 100%);
             z-index: 1;
         }
@@ -156,8 +148,15 @@
         }
 
         @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-20px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* Layout */
@@ -262,79 +261,136 @@
             .container {
                 grid-template-columns: 1fr;
             }
+
             aside {
                 order: 2;
             }
+
             .sidebar-sticky {
                 position: static;
             }
         }
 
         @media (max-width: 768px) {
-            nav { padding: 0.75rem 1rem; }
-            .nav-links { display: none; }
+            nav {
+                padding: 0.75rem 1rem;
+            }
         }
     </style>
 </head>
+
 <body>
     <nav>
         <a href="/" class="logo">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect><rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect><line x1="6" y1="6" x2="6.01" y2="6"></line><line x1="6" y1="18" x2="6.01" y2="18"></line></svg>
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2" ry="2"></rect>
+                <rect x="2" y="14" width="20" height="8" rx="2" ry="2"></rect>
+                <line x1="6" y1="6" x2="6.01" y2="6"></line>
+                <line x1="6" y1="18" x2="6.01" y2="18"></line>
+            </svg>
             Tesla Mechanical Designs
         </a>
         <button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-            <svg id="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
-            <svg id="sun" style="display:none" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+            <svg id="moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <svg id="sun" style="display:none" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="5"></circle>
+                <line x1="12" y1="1" x2="12" y2="3"></line>
+                <line x1="12" y1="21" x2="12" y2="23"></line>
+                <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                <line x1="1" y1="12" x2="3" y2="12"></line>
+                <line x1="21" y1="12" x2="23" y2="12"></line>
+                <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+            </svg>
         </button>
     </nav>
 
     <header class="hero">
-        <h1 id="main-title">DFM for Machined and Fabricated Parts: Setup Reduction and Material Choice</h1>
+        <h1 id="main-title">DFM for Injection Molded and Die Cast Parts: Draft, Wall Thickness, and Tooling</h1>
     </header>
 
     <div class="container">
         <main>
             <article class="post-content">
-                <p>DFM for machined and fabricated parts focuses on making the part easier to produce by reducing setups, fixturing, and the need for more practical material selection. The main goal is to reduce machining time and complexity while maintaining the part's strength, accuracy, and suitability for its function.</p>
+                <p><a href="https://www.teslamechanicaldesigns.com/blog/top-design-tips-for-design-for-manufacturing-dfm/"
+                        class="internal-link" title="Top Design Tips for Design for Manufacturing">DFM</a> for
+                    injection-molded and die-cast parts focuses on making the geometry compatible with the tool, the
+                    material flow, and the release process. The best molded part is not just functional; it is also
+                    shaped to avoid difficult tooling, reduce cycle time, and produce consistent results.</p>
 
-                <img src="images/machined-parts.png" alt="A professional 3D render of a complex CNC machined metal part" loading="lazy">
+                <img src="injection-molding.png"
+                    alt="A professional 3D render of an injection-molded part showing draft angles and structural ribs"
+                    loading="lazy">
 
-                <h2 id="why-machined-dfm-matters">Why Machined Part DFM Matters</h2>
-                <p>Machined parts often become expensive because of excessive re-fixturing, complex tool paths, and over-specified materials. A design that requires many setups usually increases labor time, raises the chance of error, and makes consistency harder to control.</p>
+                <h2 id="why-molded-dfm">Why Molded Part DFM Matters</h2>
+                <p>Molded and die-cast parts are highly sensitive to design details. Small geometry decisions can create
+                    serious production problems, such as sticking, warping, sink marks, or expensive tooling changes.
+                    That is why DFM must be applied early, before the design becomes locked into a mold-and-die concept.
+                </p>
 
-                <p>Fabricated parts face a similar issue when the geometry forces extra cutting, welding, or secondary operations. Good DFM keeps the part as simple as possible for the shop process that will produce it.</p>
+                <p>If the part is designed without considering tooling, the manufacturing process becomes more
+                    complicated than necessary. In many cases, that leads to higher tool costs and more revisions later.
+                </p>
 
-                <h2 id="reduce-setups">Reduce the Number of Setups</h2>
-                <p>One of the most important DFM principles for machining is to reduce the number of setups. Every time a part must be removed, re-clamped, or reoriented, the process takes longer, and the risk of alignment error increases.</p>
+                <h2 id="plan-tooling">Plan for Tooling from the Start</h2>
+                <p>Molded parts need space for parting lines, gates, ejector pins, and tool movement. If those features
+                    are ignored during design, the tooling team may need to make compromises or redesign the mold layout
+                    later. That creates a delay and can increase the cost.</p>
 
-                <p>When possible, design the part so it can be completed in a single setup or at least with minimal fixturing changes. This is especially important for precision parts where positional accuracy matters.</p>
+                <p>The best DFM approach is to think about how the tool will open, release, and eject the part before
+                    the design is finalized. This keeps the geometry realistic and manufacturable.</p>
 
-                <h2 id="keep-cuts-one-direction">Keep Cuts in One Direction</h2>
-                <p>Machining from multiple angles can increase cycle time and make the process harder to control. A part that can be machined with straightforward tool access is usually more economical than one that needs special angle changes or complex multi-axis operations.</p>
+                <h2 id="draft-angles">Use Proper Draft Angles</h2>
+                <p>Draft is one of the most important DFM rules for molded parts. Without enough draft, the part may
+                    stick in the tool, making it difficult to remove cleanly. That increases the risk of damage to both
+                    the part and the mold.</p>
 
-                <p>If the design requires machining in multiple directions, it may be worth simplifying the geometry. In many cases, splitting a complex part into two simpler parts is a better solution than forcing one difficult component.</p>
+                <p>Most surfaces need some amount of draft, and textured surfaces usually need more. The exact angle
+                    depends on the process and material, but the key point is simple: every surface that releases from
+                    the mold should be designed with tooling release in mind.</p>
 
-                <h2 id="choose-materials-wisely">Choose Materials Wisely</h2>
-                <p>Material selection has a major effect on machinability, cost, and tool wear. Harder materials take longer to machine and may require more robust tooling, greater coolant volume, and tighter process control.</p>
+                <h2 id="undercuts">Avoid Undercuts When Possible</h2>
+                <p>Undercuts make tooling more complex because they often require side actions, slides, or other special
+                    mechanisms. If the part's function does not truly require an undercut, it is better to eliminate it.
+                </p>
 
-                <p>That does not mean the softest material is always best. The correct choice is the one that matches the application without over-specifying performance. A DFM review should always ask whether a less expensive and easier-to-machine material can meet the same functional need.</p>
+                <p>Keeping the geometry clean and direct lowers tooling complexity and reduces manufacturing risk. This
+                    is one of the easiest ways to improve DFM for molded components.</p>
 
-                <h2 id="fabrication-efficiency">Design for Fabrication Efficiency</h2>
-                <p>For fabricated parts, geometry should support cutting, welding, bending, and assembly with minimal extra handling. Simple shapes are easier to build accurately and usually require less rework.</p>
+                <h2 id="wall-thickness">Control Wall Thickness</h2>
+                <p>Wall thickness has a strong effect on part quality. Thick sections can cool unevenly, leading to
+                    warping, sink marks, and longer cycle times. Thin-to-thick transitions can also lead to stress
+                    concentrations and visible surface defects.</p>
 
-                <p>Avoid unnecessary joints or welded features unless they are needed for strength, sealing, or structural purposes. Every added fabrication step increases cost and introduces more opportunities for distortion or variation.</p>
+                <p>A better approach is to keep the wall thickness as even as possible and to transition smoothly across
+                    unavoidable thickness changes. That improves both appearance and process stability.</p>
 
-                <h2 id="common-issues">Common DFM Issues in Machined and Fabricated Parts</h2>
-                <p>Typical issues include:</p>
+                <h2 id="material-flow">Consider Material Flow</h2>
+                <p>Material flow is especially important for reinforced plastics and filled materials. Fiber direction
+                    can affect strength and shrinkage, so the part should not assume the material behaves the same in
+                    every direction.</p>
+
+                <p>This means the design should account for how the material flows through the mold and how that flow
+                    will influence the final part's behavior. DFM is not only about shape; it is also about how the
+                    material fills and cools.</p>
+
+                <h2 id="molded-checklist">Common Molded-Part DFM Checks</h2>
+                <p>Before releasing a molded or die-cast part, review these points:</p>
                 <ul>
-                    <li>Too many setups.</li>
-                    <li>Deep pockets or hard-to-reach features.</li>
-                    <li>Overly tight tolerances.</li>
-                    <li>Unnecessary material thickness.</li>
-                    <li>Complex geometry that could be simplified.</li>
-                    <li>Material choices that are harder to machine than needed.</li>
+                    <li>Are draft angles included on release surfaces?</li>
+                    <li>Are there unnecessary undercuts?</li>
+                    <li>Is the wall thickness controlled and consistent?</li>
+                    <li>Is there room for gates and ejector pins?</li>
+                    <li>Will the part release cleanly from the tool?</li>
+                    <li>Does the material flow support the intended geometry?</li>
                 </ul>
-                <p>These issues are often easy to avoid if DFM is done early.</p>
+                <p>These checks help prevent expensive rework later.</p>
             </article>
         </main>
 
@@ -364,7 +420,7 @@
         const toggleBtn = document.getElementById('theme-toggle');
         const sun = document.getElementById('sun');
         const moon = document.getElementById('moon');
-        
+
         if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
             document.documentElement.classList.add('dark');
             sun.style.display = 'block';
@@ -385,7 +441,7 @@
         // TOC Generation Logic
         const tocList = document.getElementById('toc-list');
         const headers = document.querySelectorAll('main h2, main h3');
-        
+
         headers.forEach(header => {
             const li = document.createElement('li');
             const a = document.createElement('a');
@@ -394,11 +450,11 @@
             a.href = `#${id}`;
             a.textContent = header.textContent;
             li.appendChild(a);
-            
+
             if (header.tagName === 'H3') {
                 li.style.paddingLeft = '1rem';
             }
-            
+
             tocList.appendChild(li);
         });
     </script>
@@ -407,8 +463,8 @@
     {
       "@context": "https://schema.org",
       "@type": "BlogPosting",
-      "headline": "DFM for Machined and Fabricated Parts: Setup Reduction and Material Choice",
-      "image": "images/machined-parts.png",
+      "headline": "DFM for Injection Molded and Die Cast Parts: Draft, Wall Thickness, and Tooling",
+      "image": "injection-molding.png",
       "author": {
         "@type": "Organization",
         "name": "Tesla Mechanical Team"
@@ -421,9 +477,10 @@
           "url": "https://teslamechanicaldesigns.com/logo.png"
         }
       },
-      "datePublished": "2026-04-15",
-      "description": "Optimize machined part design by reducing setups and choosing the right materials."
+      "datePublished": "2026-04-16",
+      "description": "Optimize injection molded and die cast part design with tips on draft angles, wall thickness, and tooling efficiency."
     }
     </script>
 </body>
+
 </html>
